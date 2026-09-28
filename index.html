@@ -121,6 +121,41 @@ footer{background:#102e42;color:#d8e6ee;padding:45px 0 20px}.footer-grid{display
         <option value="Female">Female</option>
         <option value="Other">Other</option>
       </select>
+<section id="booking">
+  <div class="booking-container">
+  <h2>Quick Booking</h2>
+  <p class="subtitle">You can request a laboratory test or home sample collection.</p>
+
+  <form id="quickBookingForm">
+    <!-- 1. Patient Name -->
+    <div class="input-group">
+      <input type="text" id="patientName" placeholder="Patient name" required>
+    </div>
+
+    <!-- 2. Test Requirement Dropdown -->
+    <div class="input-group">
+      <select id="testRequirement" required>
+        <option value="" disabled selected>Select requirement (Test Type)</option>
+        <option value="Blood Test">Blood Test</option>
+        <option value="Urine Test">Urine Test</option>
+        <option value="Full Body Checkup">Full Body Checkup</option>
+        <option value="Other">Other Pathology Test</option>
+      </select>
+    </div>
+
+    <!-- 3. Mobile Number -->
+    <div class="input-group">
+      <input type="tel" id="mobileNumber" placeholder="Mobile number" pattern="[0-9]{10}" required>
+    </div>
+
+    <!-- 4. Gender Selection Dropdown -->
+    <div class="input-group">
+      <select id="genderSelect" required>
+        <option value="" disabled selected>Select gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
     </div>
 
     <!-- 5. Manual Age Entry -->
