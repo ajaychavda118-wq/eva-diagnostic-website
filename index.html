@@ -93,10 +93,14 @@ footer{background:#102e42;color:#d8e6ee;padding:45px 0 20px}.footer-grid{display
 <h3>Quick Booking</h3><p style="color:var(--muted);margin:8px 0 18px">You can request a laboratory test or home sample collection.</p>
 <form onsubmit="book(event)">
 <input id="name" required placeholder="Patient name">
+<select id="Gender" placeholder="Male/Female">
+<select id="age/ birth date" placeholder="age/birth date">
 <input id="phone" required type="tel" placeholder="Mobile number">
 <select id="type" required><option value="">Select requirement</option><option>Laboratory test</option><option>Health package</option><option>Home sample collection</option><option>Test enquiry</option></select>
-<input id="preferred" placeholder="Preferred date / time">
+<input id="current date and time" placeholder="current date / time">
 <textarea id="details" placeholder="Test name or other details"></textarea>
+<input id="payment details" placeholder="Amount">
+<select id="payment mode" placeholder="UPI/CASH">
 <button class="btn primary" type="submit">Send on WhatsApp</button>
 </form>
 <p class="notice">Please confirm test preparation, price and availability with the laboratory before testing.</p>
