@@ -87,22 +87,166 @@ footer{background:#102e42;color:#d8e6ee;padding:45px 0 20px}.footer-grid{display
 </section>
 
 <section id="booking">
+  <div class="booking-container">
+  <h2>Quick Booking</h2>
+  <p class="subtitle">You can request a laboratory test or home sample collection.</p>
+
+  <form id="quickBookingForm">
+    <!-- 1. Patient Name -->
+    <div class="input-group">
+      <input type="text" id="patientName" placeholder="Patient name" required>
+    </div>
+
+    <!-- 2. Test Requirement Dropdown -->
+    <div class="input-group">
+      <select id="testRequirement" required>
+        <option value="" disabled selected>Select requirement (Test Type)</option>
+        <option value="Blood Test">Blood Test</option>
+        <option value="Urine Test">Urine Test</option>
+        <option value="Full Body Checkup">Full Body Checkup</option>
+        <option value="Other">Other Pathology Test</option>
+      </select>
+    </div>
+
+    <!-- 3. Mobile Number -->
+    <div class="input-group">
+      <input type="tel" id="mobileNumber" placeholder="Mobile number" pattern="[0-9]{10}" required>
+    </div>
+
+    <!-- 4. Gender Selection Dropdown -->
+    <div class="input-group">
+      <select id="genderSelect" required>
+        <option value="" disabled selected>Select gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <!-- 5. Manual Age Entry -->
+    <div class="input-group">
+      <input type="number" id="ageInput" placeholder="Enter age" min="0" max="120" required>
+    </div>
+
+    <!-- 6. Date & Time Selection Picker -->
+    <div class="input-group">
+      <input type="datetime-local" id="appointmentDateTime" required>
+    </div>
+
+    <!-- 7. Amount Field (Read-only or manual) -->
+    <div class="input-group">
+      <input type="number" id="amountInput" placeholder="Amount (₹)" min="0">
+    </div>
+
+    <!-- 8. Submit via WhatsApp Button -->
+    <button type="button" class="whatsapp-btn" onclick="sendWhatsAppMessage()">
+      Send on WhatsApp
+    </button>
+  </form>
+  
+  <p class="footer-note">Please confirm test preparation, price and requirements before booking.</p>
+</div>
+
+<!-- CSS Styling to match the rounded input style in your screenshot -->
+<style>
+  .booking-container {
+    max-width: 450px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9fbfd;
+    border-radius: 8px;
+  }
+  .booking-container h2 {
+    color: #0b3c5d;
+    margin-bottom: 5px;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .input-group {
+    margin-bottom: 15px;
+  }
+  .input-group input, .input-group select {
+    width: 100%;
+    padding: 14px 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 12px; /* Smooth rounded corners matching your image */
+    font-size: 15px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    color: #333;
+  }
+  .input-group select {
+    background-color: #ededed; /* Grey dropdown style */
+    cursor: pointer;
+  }
+  .input-group input:focus, .input-group select:focus {
+    outline: none;
+    border-color: #0b3c5d;
+  }
+  .whatsapp-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #ffffff;
+    color: #0b3c5d;
+    border: 1px solid #dcdcdc;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.2s;
+  }
+  .whatsapp-btn:hover {
+    background-color: #f0f4f8;
+  }
+  .footer-note {
+    font-size: 12px;
+    color: #888;
+    margin-top: 15px;
+    text-align: center;
+  }
+</style>
+
+<!-- JavaScript to collect information and format it automatically for WhatsApp -->
+<script>
+  function sendWhatsAppMessage() {
+    const name = document.getElementById('patientName').value;
+    const test = document.getElementById('testRequirement').value;
+    const mobile = document.getElementById('mobileNumber').value;
+    const gender = document.getElementById('genderSelect').value;
+    const age = document.getElementById('ageInput').value;
+    const dateTime = document.getElementById('appointmentDateTime').value;
+    const amount = document.getElementById('amountInput').value || "Not specified";
+
+    if(!name || !test || !mobile || !gender || !age || !dateTime) {
+      alert("Please fill out all required fields before sending.");
+      return;
+    }
+
+    // Replace with Eva Diagnostic's actual WhatsApp phone number (include country code, e.g., 91 for India)
+    const whatsappNumber = "91XXXXXXXXXX"; 
+
+    // Formats the text message cleanly for your chat
+    const textMessage = `*New Booking Request - EVA Diagnostic*%0A%0A` +
+                        `*Patient Name:* ${name}%0A` +
+                        `*Gender:* ${gender}%0A` +
+                        `*Age:* ${age}%0A` +
+                        `*Test Needed:* ${test}%0A` +
+                        `*Mobile:* ${mobile}%0A` +
+                        `*Preferred Date/Time:* ${dateTime}%0A` +
+                        `*Estimated Amount:* ₹${amount}`;
+
+    // Opens WhatsApp automatically with pre-filled details
+    window.open(`https://wa.me{whatsappNumber}?text=${textMessage}`, '_blank');
+  }
+</script>
+
 <div class="container"><div class="head"><h2>Book a Test</h2><p>Send your details through WhatsApp and our team will contact you.</p></div>
-<div class="contact-grid">
-<div class="contact">
-<h3>Quick Booking</h3><p style="color:var(--muted);margin:8px 0 18px">You can request a laboratory test or home sample collection.</p>
-<form onsubmit="book(event)">
-<input id="name" required placeholder="Patient name">
-<select id="type" required><option value="">Select requirement</option><option>Male</option><option>Female</option></select>
-<input id="manualAgeInput" type="number" 
-<input id="phone" required type="tel" placeholder="Mobile number">
-<select id="type" required><option value="">Select requirement</option><option>Laboratory test</option><option>Health package</option><option>Home sample collection</option><option>Test enquiry</option></select>
-<label for="formatSelect">Choose Date/Time Format:</label>
-<select id="formatSelect" onchange="updateDateTime()">
-<p id="dateTimeDisplay">Loading live date and time...</p>
-<textarea id="details" placeholder="Test name or other details"></textarea>
-<input id="payment details" placeholder="Amount">
-<select id="payment mode" required><option value="">Select requirement</option><option>UPI</option><option>CASH</option></select
+
 <button class="btn primary" type="submit">Send on WhatsApp</button>
 </form>
 <p class="notice">Please confirm test preparation, price and availability with the laboratory before testing.</p>
