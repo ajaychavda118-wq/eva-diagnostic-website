@@ -1,404 +1,61 @@
-<!-- =========================
-     QUICK BOOKING
-========================= -->
-<section id="booking" class="booking-section">
-  <div class="booking-container">
-
-    <h2>Quick Booking</h2>
-    <p class="subtitle">
-      Request a laboratory test or sample collection by filling out the form below.
-    </p>
-
-    <form id="quickBookingForm">
-
-      <!-- Patient Name -->
-      <div class="input-group">
-        <label for="patientName">Patient Name</label>
-        <input
-          type="text"
-          id="patientName"
-          name="patientName"
-          placeholder="Enter patient name"
-          autocomplete="name"
-          required
-        >
-      </div>
-
-      <!-- Test Requirement -->
-      <div class="input-group">
-        <label for="testRequirementButton">
-          Test Requirement
-          <span class="optional">(Select one or more)</span>
-        </label>
-
-        <div class="multi-select" id="testRequirement">
-
-          <button
-            type="button"
-            class="multi-select-button"
-            id="testRequirementButton"
-            aria-haspopup="listbox"
-            aria-expanded="false"
-          >
-            <span id="testRequirementText">
-              Select test requirement
-            </span>
-            <span class="multi-select-arrow">⌄</span>
-          </button>
-
-          <div
-            class="multi-select-menu"
-            id="testRequirementMenu"
-            role="listbox"
-            aria-multiselectable="true"
-          >
-
-            <div class="multi-select-group">Blood Tests</div>
-
-            <label class="multi-option">
-              <input type="checkbox" value="CBC (Complete Blood Count)">
-              CBC (Complete Blood Count)
-            </label>
-
-            <label class="multi-option">
-              <input type="checkbox" value="Hemoglobin (Hb)">
-              Hemoglobin (Hb)
-            </label>
-
-            <label class="multi-option">
-              <input type="checkbox" value="Blood Sugar / Glucose">
-              Blood Sugar / Glucose
-            </label>
-
-            <label class="multi-option">
-              <input type="checkbox" value="HbA1c">
-              HbA1c
-            </label>
-
-            <label class="multi-option">
-              <input type="checkbox" value="Lipid Profile">
-              Lipid Profile
-            </label>
-
-            <label class="multi-option">
-              <input type="checkbox" value="Liver Function Test (LFT)">
-              Liver Function Test (LFT)
-            </label>
-
-            <label class="multi-option">
-              <input type="checkbox" value="Kidney Function Test (KFT)">
-              Kidney Function Test (KFT)
-            </label>
-
-            <label class="multi-option">
-              <input type="checkbox" value="Thyroid Profile">
-              Thyroid Profile
-            </label>
-
-            <label class="multi-option">
-              <input type="checkbox" value="Vitamin B12">
-              Vitamin B12
-            </label>
-
-            <label class="multi-option">
-              <input type="checkbox" value="Vitamin D">
-              Vitamin D
-            </label>
-
-            <label class="multi-option">
-              <input type="checkbox" value="CRP">
-              CRP
-            </label>
-
-            <label class="multi-option">
-              <input type="checkbox" value="ESR">
-              ESR
-            </label>
-
-            <label class="multi-option">
-              <input type="checkbox" value="Other Blood Test">
-              Other Blood Test
-            </label>
-
-
-            <div class="multi-select-group">Other Tests</div>
-
-            <label class="multi-option">
-              <input type="checkbox" value="Urine Test">
-              Urine Test
-            </label>
-
-            <label class="multi-option">
-              <input type="checkbox" value="Full Body Checkup">
-              Full Body Checkup
-            </label>
-
-            <label class="multi-option">
-              <input type="checkbox" value="Other Pathology Test">
-              Other Pathology Test
-            </label>
-
-            <button
-              type="button"
-              class="multi-select-done"
-              id="testRequirementDone"
-            >
-              Done
-            </button>
-
-          </div>
-        </div>
-
-        <small class="field-help">
-          You can select multiple tests from the list.
-        </small>
-      </div>
-
-
-      <!-- Specific Test Name -->
-      <div class="input-group">
-        <label for="specificTestName">
-          Additional / Specific Test Name(s)
-          <span class="optional">(Optional)</span>
-        </label>
-
-        <input
-          type="text"
-          id="specificTestName"
-          name="specificTestName"
-          placeholder="Enter specific test name(s)"
-        >
-
-        <small class="field-help">
-          You can manually add one or more test names here.
-        </small>
-      </div>
-
-
-      <!-- Reference Doctor -->
-      <div class="input-group">
-        <label for="referenceDoctor">
-          Reference Doctor Name
-          <span class="optional">(Optional)</span>
-        </label>
-
-        <input
-          type="text"
-          id="referenceDoctor"
-          name="referenceDoctor"
-          placeholder="Enter referring doctor name"
-        >
-      </div>
-
-
-      <!-- Mobile -->
-      <div class="input-group">
-        <label for="mobileNumber">Mobile Number</label>
-
-        <input
-          type="tel"
-          id="mobileNumber"
-          name="mobileNumber"
-          placeholder="Enter 10-digit mobile number"
-          inputmode="numeric"
-          maxlength="10"
-          pattern="[6-9][0-9]{9}"
-          autocomplete="tel"
-          required
-        >
-      </div>
-
-
-      <!-- Gender -->
-      <div class="input-group">
-        <label for="genderSelect">Gender</label>
-
-        <select
-          id="genderSelect"
-          name="gender"
-          required
-        >
-          <option value="" disabled selected>
-            Select gender
-          </option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
-
-
-      <!-- Age -->
-      <div class="input-group">
-        <label for="ageInput">Age</label>
-
-        <input
-          type="number"
-          id="ageInput"
-          name="age"
-          placeholder="Enter age"
-          min="0"
-          max="120"
-          inputmode="numeric"
-          required
-        >
-      </div>
-
-
-      <!-- Date -->
-      <div class="input-group">
-        <label for="appointmentDate">Preferred Date</label>
-
-        <input
-          type="date"
-          id="appointmentDate"
-          name="appointmentDate"
-          required
-        >
-      </div>
-
-
-      <!-- Time -->
-      <div class="input-group">
-        <label for="appointmentTime">Preferred Time</label>
-
-        <input
-          type="time"
-          id="appointmentTime"
-          name="appointmentTime"
-          required
-        >
-      </div>
-
-
-      <!-- Collection -->
-      <div class="input-group">
-        <label for="collectionType">Sample Collection</label>
-
-        <select
-          id="collectionType"
-          name="collectionType"
-          required
-        >
-          <option value="" disabled selected>
-            Select collection type
-          </option>
-
-          <option value="Laboratory Visit">
-            Laboratory Visit
-          </option>
-
-          <option value="Home Sample Collection">
-            Home Sample Collection
-          </option>
-
-          <option value="Hospital Collection">
-            Hospital Collection
-          </option>
-        </select>
-      </div>
-
-
-      <!-- Amount -->
-      <div class="input-group">
-        <label for="amountInput">Amount (₹)</label>
-
-        <input
-          type="number"
-          id="amountInput"
-          name="amount"
-          placeholder="Enter amount"
-          min="0"
-          step="1"
-          inputmode="numeric"
-        >
-      </div>
-
-
-      <!-- Payment -->
-      <div class="input-group">
-        <label for="paymentMode">Payment Mode</label>
-
-        <select
-          id="paymentMode"
-          name="paymentMode"
-          required
-        >
-          <option value="" disabled selected>
-            Select payment mode
-          </option>
-
-          <option value="UPI">UPI</option>
-          <option value="Cash">Cash</option>
-          <option value="Payment at Laboratory">
-            Payment at Laboratory
-          </option>
-        </select>
-      </div>
-
-
-      <!-- Attachments -->
-      <div class="input-group">
-
-        <label for="attachments">
-          Attach Prescription / Report
-          <span class="optional">(Optional)</span>
-        </label>
-
-        <input
-          type="file"
-          id="attachments"
-          name="attachments"
-          accept="image/*,.pdf,application/pdf"
-          multiple
-        >
-
-        <small class="field-help">
-          You can select photos or PDF files.
-          Maximum 5 files, 10 MB per file.
-        </small>
-
-        <div
-          id="attachmentList"
-          class="attachment-list"
-        ></div>
-
-      </div>
-
-
-      <!-- Message -->
-      <div class="input-group">
-
-        <label for="additionalMessage">
-          Additional Message
-          <span class="optional">(Optional)</span>
-        </label>
-
-        <textarea
-          id="additionalMessage"
-          name="additionalMessage"
-          rows="3"
-          placeholder="Any additional information..."
-        ></textarea>
-
-      </div>
-
-
-      <!-- WhatsApp Button -->
-      <button
-        type="submit"
-        class="whatsapp-booking-btn"
-        id="whatsappButton"
-      >
-        <span class="whatsapp-icon">💬</span>
-        Send Booking Request on WhatsApp
-      </button>
-
-    </form>
-
-    <p class="notice">
-      Please confirm test preparation, price and availability with the laboratory before testing.
-    </p>
-
-  </div>
-</section>
+index.html
+│
+├── Top contact bar
+│   ├── Open 24 Hours
+│   ├── Kudasan, Gandhinagar
+│   └── 8511954118
+│
+├── Header
+│   ├── EVA Logo
+│   ├── Home
+│   ├── Services
+│   ├── Book a Test
+│   ├── About
+│   ├── Location
+│   └── Call Now
+│
+├── Home / Hero
+│   ├── EVA Diagnostic Pathology Laboratory
+│   ├── 24-hour availability
+│   ├── Home sample collection
+│   ├── Convenient booking
+│   └── Kudasan location
+│
+├── Services
+│   ├── Pathology & Diagnostic Tests
+│   ├── Home Sample Collection
+│   └── Test Enquiry & Booking
+│
+├── Tests & Packages
+│   ├── Test Menu
+│   ├── Health Packages
+│   └── Current Offers
+│
+├── Quick Booking
+│   ├── Patient Name
+│   ├── Multiple Test Selection
+│   ├── Specific Test Name
+│   ├── Reference Doctor
+│   ├── Mobile
+│   ├── Gender
+│   ├── Age
+│   ├── Date
+│   ├── Time
+│   ├── Laboratory Visit
+│   ├── Home Sample Collection
+│   ├── Hospital Collection
+│   ├── Amount
+│   ├── Payment Mode
+│   ├── Attachments
+│   ├── Additional Message
+│   └── WhatsApp Booking
+│
+├── Contact
+│
+├── About
+│
+├── Location + Google Maps
+│
+├── Floating WhatsApp
+│
+└── Footer
